@@ -1,75 +1,36 @@
-# React + TypeScript + Vite
+# Copilot Working Group Workshops
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Getting started:
+- Run `npm install`
+- Run `npm run dev`
 
-Currently, two official plugins are available:
+This repository hosts hands-on workshops to learn and practice GitHub Copilot—using Copilot Chat in the GitHub UI, Copilot in VSCode, and custom agents.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Workshops and Exercises
 
-## React Compiler
+### Workshop 1: GitHub Copilot
+- Exercise 1: Create a missing test for `<ProductCard />`
+  - Prompt Copilot to add a test that covers `<ProductCard />`.
+  - Run and refine the test based on observed behavior.
+  - Iterate with Copilot Chat to improve assertions and coverage.
 
-The React Compiler is enabled on this template. See [this documentation](https://react.dev/learn/react-compiler) for more information.
+- Exercise 2: Add Copilot Instructions
+  - Create repo instructions to guide code and test generation.
+  - Specify preferred conventions and constraints relevant to this project.
+  - Re-run prompts from Exercise 1 to compare improved output.
 
-Note: This will impact Vite dev & build performances.
+- Exercise 3: Participant's choice feature
+  - Implement a small feature (e.g., add cart persistence for items added to the cart across sessions).
+  - Add or adjust tests and instructions as needed.
+  - Open a PR and use @copilot to propose additional tests, summarize changes, and suggest refactors.
 
-## Expanding the ESLint configuration
+### Workshop 2: VSCode Copilot
+- WIP
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+### Workshop 3: Custom Agents
+- WIP
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
-
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+## Goals
+- Practice effective prompting in both chat and PR environments.
+- Use instructions to guide Copilot's output for consistency and quality.
+- Build confidence integrating Copilot into everyday workflows across GitHub, VSCode, and custom agents.
