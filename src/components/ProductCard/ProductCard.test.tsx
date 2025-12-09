@@ -305,7 +305,8 @@ describe('ProductCard', () => {
     });
 
     it('should handle product with missing optional brand', () => {
-      const product = createMockProduct({ brand: undefined });
+      const { brand, ...productWithoutBrand } = createMockProduct();
+      const product = productWithoutBrand as Product;
       renderWithProvider(<ProductCard product={product} />);
 
       // Card should still render without errors
