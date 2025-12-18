@@ -7,7 +7,7 @@ import type { Product } from '../../types/product';
 
 // Mock the Link component from TanStack Router
 vi.mock('@tanstack/react-router', () => ({
-  Link: ({ children, className, ...props }: any) => (
+  Link: ({ children, className, ...props }: { children: React.ReactNode; className?: string; [key: string]: unknown }) => (
     <a className={className} {...props}>
       {children}
     </a>
