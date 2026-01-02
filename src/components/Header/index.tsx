@@ -1,5 +1,5 @@
 import { Link } from '@tanstack/react-router';
-import { useCartContext } from '../../contexts/CartContext';
+import { useCartContext } from '../../contexts';
 import styles from './Header.module.css';
 
 export const Header = () => {

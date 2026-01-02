@@ -4,7 +4,7 @@ import userEvent from '@testing-library/user-event';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { createMemoryHistory, createRootRoute, createRoute, createRouter, RouterProvider } from '@tanstack/react-router';
 import { ProductDetail } from './index';
-import { CartProvider } from '../../contexts/CartContext';
+import { CartProvider } from '../../contexts';
 import type { Product } from '../../types/product';
 
 // Mock product data
@@ -25,9 +25,7 @@ const mockProduct: Product = {
 
 // Helper function to render component with all required providers
 const renderWithProviders = (
-  productData: Product | null = mockProduct,
-  isLoading = false,
-  error: Error | null = null
+  productData: Product | null = mockProduct
 ) => {
   const queryClient = new QueryClient({
     defaultOptions: {
@@ -37,8 +35,10 @@ const renderWithProviders = (
     },
   });
 
-  // Mock the useQuery hook response
-  queryClient.setQueryData(['product', 1], productData);
+  // Pre-populate the query cache with product data
+  if (productData) {
+    queryClient.setQueryData(['product', 1], productData);
+  }
 
   // Create router setup
   const rootRoute = createRootRoute();
@@ -58,41 +58,6 @@ const renderWithProviders = (
       initialEntries: ['/products/1'],
     }),
   });
-
-  // Override query state if needed for loading/error states
-  if (isLoading) {
-    queryClient.setQueryState(['product', 1], {
-      data: undefined,
-      error: null,
-      status: 'pending',
-      dataUpdateCount: 0,
-      dataUpdatedAt: 0,
-      errorUpdateCount: 0,
-      errorUpdatedAt: 0,
-      fetchFailureCount: 0,
-      fetchFailureReason: null,
-      fetchMeta: null,
-      isInvalidated: false,
-      fetchStatus: 'fetching',
-    });
-  }
-
-  if (error) {
-    queryClient.setQueryState(['product', 1], {
-      data: undefined,
-      error,
-      status: 'error',
-      dataUpdateCount: 0,
-      dataUpdatedAt: 0,
-      errorUpdateCount: 1,
-      errorUpdatedAt: Date.now(),
-      fetchFailureCount: 1,
-      fetchFailureReason: error,
-      fetchMeta: null,
-      isInvalidated: false,
-      fetchStatus: 'idle',
-    });
-  }
 
   return render(
     <QueryClientProvider client={queryClient}>
