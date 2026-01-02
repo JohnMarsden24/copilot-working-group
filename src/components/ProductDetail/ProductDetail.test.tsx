@@ -35,9 +35,12 @@ const renderWithProviders = (
     },
   });
 
+  // Get the product ID from the product data, or use 1 as default
+  const productId = productData?.id ?? 1;
+
   // Pre-populate the query cache with product data
   if (productData) {
-    queryClient.setQueryData(['product', 1], productData);
+    queryClient.setQueryData(['product', productId], productData);
   }
 
   // Create router setup
@@ -55,7 +58,7 @@ const renderWithProviders = (
   const router = createRouter({
     routeTree: rootRoute.addChildren([productRoute]),
     history: createMemoryHistory({
-      initialEntries: ['/products/1'],
+      initialEntries: [`/products/${productId}`],
     }),
   });
 
