@@ -20,3 +20,6 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
 
   return <CartContext.Provider value={cart}>{children}</CartContext.Provider>;
 };
+
+// Re-export useCartContext for convenience
+export { useCartContext } from './useCartContext';
