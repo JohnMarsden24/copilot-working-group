@@ -1,5 +1,5 @@
 import { useProduct } from '../../hooks/useProduct';
-import { useCartContext } from '../../contexts/CartContext';
+import { useCartContext } from '../../contexts';
 import { Button } from '../ui/Button';
 import styles from './ProductActions.module.css';
 

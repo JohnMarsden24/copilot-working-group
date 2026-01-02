@@ -2,7 +2,7 @@ import { Link } from '@tanstack/react-router';
 import type { Product } from '../../types/product';
 import { Card } from '../ui/Card';
 import { Button } from '../ui/Button';
-import { useCartContext } from '../../contexts/CartContext';
+import { useCartContext } from '../../contexts';
 import styles from './ProductCard.module.css';
 
 interface ProductCardProps {
